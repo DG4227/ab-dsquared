@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20161011195220) do
+=======
+ActiveRecord::Schema.define(version: 20161011210507) do
+>>>>>>> httparty
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +43,14 @@ ActiveRecord::Schema.define(version: 20161011195220) do
     t.string   "type"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "credit_cards", force: :cascade do |t|
+    t.string "holders_name"
+    t.string "number"
+    t.string "card_type"
+    t.string "cvc"
+    t.string "expiry_date"
   end
 
 end
