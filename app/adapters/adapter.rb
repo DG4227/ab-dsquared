@@ -5,14 +5,13 @@ module Adapter
     include HTTParty
 
     BASE_URL = 'https://app.xapix.io/api/v1'
-    HEADERS = {
-      "Authorization": 'ab16_DSquared:mKCQoALD4JvY3WkTcaGOx670H2ge98nM',
+    HEADERS = {'Accept' => 'application/json',
+      'Authorization' => 'ab16_DSquared:mKCQoALD4JvY3WkTcaGOx670H2ge98nM'
       # "Content-Type" => 'application/json',
-      "Accept": 'application/json'
     }
 
     def initialize
-      @headers = HEADERS
+      # @headers = HEADERS
     end
 
     def get_credit_card_id(ccard)
@@ -23,12 +22,12 @@ module Adapter
       expiry_date = ccard.expiry_date
       data = {
         "number": number,
-        "card_type": type,
+        "type": type,
         "holders_name": holders_name,
         "cvc": cvc,
         "expiry_date": expiry_date
       }
-      response = self.class.post(BASE_URL + "/airberlin_lab_2016/credit_cards", "headers" => HEADERS, "data" => data)
+      response = self.class.post(BASE_URL + "/airberlin_lab_2016/credit_cards", query: {"data": data}, headers: HEADERS)
     end
 
     def flight_segment
