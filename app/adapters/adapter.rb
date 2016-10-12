@@ -28,6 +28,7 @@ module Adapter
         "expiry_date": expiry_date
       }
       response = self.class.post(BASE_URL + "/credit_cards", query: {"data": data}, headers: HEADERS)
+      response.cc_id
     end
 
     def flight_segment
