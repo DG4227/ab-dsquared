@@ -3,6 +3,33 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %> <br />
+
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %> <br />
+
+  <%= f.label :address %>
+  <%= f.text_field :address %> <br />
+
+  <%= f.label :zipcode %>
+  <%= f.text_field :zipcode %> <br />
+
+  <%= f.label :city %>
+  <%= f.text_field :city %> <br />
+
+  <%= f.label :dob %>
+  <%= f.text_field :dob %> <br />
+
+  <%= f.label :persontype %>
+  <%= f.text_field :persontype %> <br />
+
+  <%= f.label :country_code %>
+  <%= f.text_field :country_code %> <br />
+
+  <%= f.label :language_code %>
+  <%= f.text_field :language_code %> <br />
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
