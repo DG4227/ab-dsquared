@@ -12,23 +12,6 @@ module Adapter
     def initialize
     end
 
-    def get_credit_card_id(ccard)
-      number = ccard.number
-      type = ccard.card_type
-      holders_name = ccard.holders_name
-      cvc = ccard.cvc
-      expiry_date = ccard.expiry_date
-      data = {
-        "number": number,
-        "type": type,
-        "holders_name": holders_name,
-        "cvc": cvc,
-        "expiry_date": expiry_date
-      }
-      response = self.class.post(BASE_URL + "/credit_cards", query: {"data": data}, headers: HEADERS)
-      response.cc_id
-    end
-
     def flight_segment
       self.class.get(BASE_URL + "/availabilities", query: {"filter": ["departure": "TXL", "destination": "PMI"]}, headers: HEADERS)
     end
@@ -37,6 +20,7 @@ module Adapter
       customer_id = get_customer_address_id(user)
       passengers = get_passengers_id(user)
       cc = get_credit_card_id(user.credit_card)
+      byebug
       fs = flight_segment
       data =
         {
@@ -58,7 +42,23 @@ module Adapter
       latlongs
     end
 
-    private
+    def get_credit_card_id(ccard)
+      number = ccard.number
+      type = ccard.card_type
+      holders_name = ccard.holders_name
+      cvc = ccard.cvc
+      expiry_date = ccard.expiry_date
+      data = {
+        "number": number,
+        "type": type,
+        "holders_name": holders_name,
+        "cvc": cvc,
+        "expiry_date": expiry_date
+      }
+      response = self.class.post(BASE_URL + "/credit_cards", query: {"data": data}, headers: HEADERS)
+      byebug
+      response["cc_id"]
+    end
 
     def get_customer_address_id(user)
       name = user.first_name + " " + user.last_name
@@ -66,7 +66,7 @@ module Adapter
       country_code = user.country_code
       language_code = user.language_code
       city = user.city
-      address = user.address1
+      address = user.address
       email = user.email
       data = {
         "zip": zip,
@@ -78,7 +78,7 @@ module Adapter
         "language_code": language_code
       }
       response = self.class.post(BASE_URL + "/customer_addresses", query: {"data": data}, headers: HEADERS)
-      response.c_id
+      response["c_id"]
     end
 
     def get_passengers_id(user)
@@ -93,7 +93,8 @@ module Adapter
         "date_of_birth": date_of_birth
       }
       response = self.class.post(BASE_URL + "/passengers", query: {"data": data}, headers: HEADERS)
-      response.p_id
+      byebug
+      response["p_id"]
     end
 
 

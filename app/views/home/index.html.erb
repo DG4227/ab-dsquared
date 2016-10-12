@@ -1,3 +1,15 @@
 <h1>Welcome <%= current_user.email %>, thanks for signing up!</h1>
 
+<h3>Create Booking</h3>
+<%= form_tag("/bookings", method: "post") do %>
+  <%= label_tag(:origin_airport_code, "Origin Airport Code:") %>
+  <%= text_field_tag(:origin_airport_code) %>
+  <%= label_tag(:destination_airport_code, "Destination Airport Code:") %>
+  <%= text_field_tag(:destination_airport_code) %>
+  <%= label_tag(:hotel, "Hotel Name:") %>
+  <%= text_field_tag(:hotel) %>
+  <%= submit_tag("Submit") %>
+<% end %>
+
+
 <%= link_to 'log out', destroy_user_session_path, method: :delete %>

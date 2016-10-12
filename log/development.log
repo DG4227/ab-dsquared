@@ -171,7 +171,6 @@ Migrating to CreateCCardTable (20161011210507)
   [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5901453059382514830)[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
   [1m[35m (3.3ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
->>>>>>> httparty
 FROM pg_constraint c
 JOIN pg_class t1 ON c.conrelid = t1.oid
 JOIN pg_class t2 ON c.confrelid = t2.oid
@@ -192,7 +191,6 @@ ORDER BY c.conname
   [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5901453059382514830)[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
   [1m[35m (9.1ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
-=======
   AND t1.relname = 'credit_cards'
   AND t3.nspname = ANY (current_schemas(false))
 ORDER BY c.conname
@@ -233,7 +231,6 @@ JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
 JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
 JOIN pg_namespace t3 ON c.connamespace = t3.oid
 WHERE c.contype = 'f'
-<<<<<<< HEAD
   AND t1.relname = 'users'
   AND t3.nspname = ANY (current_schemas(false))
 ORDER BY c.conname
@@ -1596,9 +1593,9 @@ Processing by Devise::RegistrationsController#new as HTML
 Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
 
 
-  
+
 NoMethodError (undefined method `validatable?' for nil:NilClass):
-  
+
 devise (4.2.0) app/controllers/devise_controller.rb:170:in `set_minimum_password_length'
 activesupport (5.0.0.1) lib/active_support/callbacks.rb:382:in `block in make_lambda'
 activesupport (5.0.0.1) lib/active_support/callbacks.rb:150:in `block (2 levels) in halting_and_conditional'
@@ -1717,9 +1714,9 @@ Processing by Devise::RegistrationsController#new as HTML
 Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
 
 
-  
+
 NoMethodError (undefined method `validatable?' for nil:NilClass):
-  
+
 devise (4.2.0) app/controllers/devise_controller.rb:170:in `set_minimum_password_length'
 activesupport (5.0.0.1) lib/active_support/callbacks.rb:382:in `block in make_lambda'
 activesupport (5.0.0.1) lib/active_support/callbacks.rb:150:in `block (2 levels) in halting_and_conditional'
@@ -1827,9 +1824,9 @@ Completed 200 OK in 34ms (Views: 26.7ms | ActiveRecord: 0.7ms)
 
 
 Started GET "/users/sign_out" for ::1 at 2016-10-11 19:34:17 -0400
-  
+
 ActionController::RoutingError (No route matches [GET] "/users/sign_out"):
-  
+
 actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
 web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
 web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
@@ -1866,9 +1863,9 @@ puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
   Rendered /Users/Dan/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (131.7ms)
 Started GET "/users/new" for ::1 at 2016-10-11 19:38:17 -0400
   [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
-  
+
 ActionController::RoutingError (No route matches [GET] "/users/new"):
-  
+
 actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
 web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
 web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
@@ -1925,7 +1922,7 @@ This may happen for two reasons:
 Completed 404 Not Found in 53ms (ActiveRecord: 10.3ms)
 
 
-  
+
 AbstractController::ActionNotFound (Could not find devise mapping for path "/".
 This may happen for two reasons:
 
@@ -1941,7 +1938,7 @@ This may happen for two reasons:
    @request.env["devise.mapping"] = Devise.mappings[:user]
 
 ):
-  
+
 devise (4.2.0) app/controllers/devise_controller.rb:88:in `unknown_action!'
 devise (4.2.0) app/controllers/devise_controller.rb:63:in `assert_is_devise_resource!'
 activesupport (5.0.0.1) lib/active_support/callbacks.rb:382:in `block in make_lambda'
@@ -2036,12 +2033,12 @@ Processing by HomeController#index as HTML
 Completed 500 Internal Server Error in 102ms (ActiveRecord: 9.6ms)
 
 
-  
+
 ActionView::Template::Error (undefined method `downcase' for nil:NilClass):
     1: <h1>Welcome <%= current_user.email %></h1>
     2: <p><%= link_to 'edit profile', edit_user_registration_path(current_user) %></p>
     3: <p><%= link_to 'logout', eval("destroy_#{current_user.type.downcase}_session_path"), method: :delete %></p>
-  
+
 app/views/home/index.html.erb:3:in `_app_views_home_index_html_erb___532363325847194759_70243693041020'
   Rendering /Users/Dan/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
   Rendering /Users/Dan/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
@@ -2068,15 +2065,15 @@ Processing by HomeController#index as HTML
 Completed 500 Internal Server Error in 56ms (ActiveRecord: 1.5ms)
 
 
-  
+
 ActionView::Template::Error (No route matches {:action=>"delete", :controller=>"home"}):
     1: <h1>Welcome <%= current_user.email %></h1>
-    2: 
+    2:
     3: <%= button_to "logout", action: "delete" %>
     4:  <form method="post" action="devise/sessions/destroy" class="button_to">
     5:       <div><input value="logout" type="submit" /></div>
     6:   </form>
-  
+
 app/views/home/index.html.erb:3:in `_app_views_home_index_html_erb___2050304356070293646_70258860838980'
   Rendering /Users/Dan/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
   Rendering /Users/Dan/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
@@ -2094,12 +2091,12 @@ Processing by HomeController#index as HTML
 Completed 500 Internal Server Error in 73ms (ActiveRecord: 1.8ms)
 
 
-  
+
 ActionView::Template::Error (No route matches {:action=>"delete", :controller=>"home"}):
     1: <h1>Welcome <%= current_user.email %></h1>
-    2: 
+    2:
     3: <%= button_to destroy_user_session_path(current_user), action: "delete" %>
-  
+
 app/views/home/index.html.erb:3:in `_app_views_home_index_html_erb___2050304356070293646_70258880035060'
   Rendering /Users/Dan/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
   Rendering /Users/Dan/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
@@ -2117,13 +2114,13 @@ Processing by HomeController#index as HTML
 Completed 500 Internal Server Error in 314ms (ActiveRecord: 2.1ms)
 
 
-  
+
 ActionView::Template::Error (undefined method `destroy_current_session_path' for #<#<Class:0x007fccd52d3ee0>:0x007fccd759ae60>
 Did you mean?  destroy_user_session_path):
     1: <h1>Welcome <%= current_user.email %></h1>
-    2: 
+    2:
     3: <%= link_to "Logout", destroy_current_session_path(current_user)%>
-  
+
 app/views/home/index.html.erb:3:in `_app_views_home_index_html_erb___2050304356070293646_70258881518580'
   Rendering /Users/Dan/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
   Rendering /Users/Dan/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
@@ -2141,13 +2138,13 @@ Processing by HomeController#index as HTML
 Completed 500 Internal Server Error in 213ms (ActiveRecord: 0.8ms)
 
 
-  
+
 ActionView::Template::Error (undefined local variable or method `destroy_current_session_path' for #<#<Class:0x007fccd52d3ee0>:0x007fccd550a308>
 Did you mean?  destroy_user_session_path):
     1: <h1>Welcome <%= current_user.email %></h1>
-    2: 
+    2:
     3: <%= link_to "Logout", destroy_current_session_path%>
-  
+
 app/views/home/index.html.erb:3:in `_app_views_home_index_html_erb___2050304356070293646_70258864446860'
   Rendering /Users/Dan/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
   Rendering /Users/Dan/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
@@ -2165,13 +2162,13 @@ Processing by HomeController#index as HTML
 Completed 500 Internal Server Error in 184ms (ActiveRecord: 1.3ms)
 
 
-  
+
 ActionView::Template::Error (undefined local variable or method `destroy_current_session' for #<#<Class:0x007fccd52d3ee0>:0x007fccd4c27920>
 Did you mean?  destroy_user_session_url):
     1: <h1>Welcome <%= current_user.email %></h1>
-    2: 
+    2:
     3: <%= link_to "Logout", destroy_current_session%>
-  
+
 app/views/home/index.html.erb:3:in `_app_views_home_index_html_erb___2050304356070293646_70258859781620'
   Rendering /Users/Dan/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
   Rendering /Users/Dan/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
@@ -2189,15 +2186,15 @@ Processing by HomeController#index as HTML
 Completed 500 Internal Server Error in 63ms (ActiveRecord: 1.7ms)
 
 
-  
+
 ActionView::Template::Error (No route matches {:action=>"new", :controller=>"home"}):
     1: <h1>Welcome <%= current_user.email %></h1>
-    2: 
+    2:
     3: <%= button_to "New", action: "new" %>
     4: # => "<form method="post" action="/controller/new" class="button_to">
     5: #      <input value="New" type="submit" />
     6: #    </form>"
-  
+
 app/views/home/index.html.erb:3:in `_app_views_home_index_html_erb___2050304356070293646_70258859466860'
   Rendering /Users/Dan/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
   Rendering /Users/Dan/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
@@ -2353,6 +2350,7 @@ WHERE c.contype = 'f'
 ORDER BY c.conname
 [0m
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
@@ -2408,16 +2406,16 @@ Processing by Devise::RegistrationsController#new as HTML
 Completed 500 Internal Server Error in 337ms (ActiveRecord: 0.0ms)
 
 
-  
+
 ActionView::Template::Error (undefined method `first_name_field' for #<ActionView::Helpers::FormBuilder:0x007f9c0b84b008>):
-     5: 
+     5:
      6:   <div class="field">
      7:     <%= f.label :first_name %><br />
      8:     <%= f.first_name_field :first_name, autocomplete: "off" %>
      9:   </div>
-    10: 
+    10:
     11:   <div class="field">
-  
+
 app/views/devise/registrations/new.html.erb:8:in `block in _app_views_devise_registrations_new_html_erb__2208641437494215263_70154092550840'
 app/views/devise/registrations/new.html.erb:3:in `_app_views_devise_registrations_new_html_erb__2208641437494215263_70154092550840'
   Rendering /Users/Dan/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
@@ -2449,16 +2447,16 @@ Processing by Devise::RegistrationsController#new as HTML
 Completed 500 Internal Server Error in 391ms (ActiveRecord: 0.0ms)
 
 
-  
+
 ActionView::Template::Error (undefined method `first_name_field' for #<ActionView::Helpers::FormBuilder:0x007fa3073ae6a0>):
-     5: 
+     5:
      6:   <div class="field">
      7:     <%= f.label :first_name %><br />
      8:     <%= f.first_name_field :first_name, autocomplete: "off" %>
      9:   </div>
-    10: 
+    10:
     11:   <div class="field">
-  
+
 app/views/devise/registrations/new.html.erb:8:in `block in _app_views_devise_registrations_new_html_erb__1591442979435390274_70169068080700'
 app/views/devise/registrations/new.html.erb:3:in `_app_views_devise_registrations_new_html_erb__1591442979435390274_70169068080700'
   Rendering /Users/Dan/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
@@ -2519,15 +2517,15 @@ Processing by HomeController#index as HTML
 Completed 500 Internal Server Error in 117ms (ActiveRecord: 3.2ms)
 
 
-  
+
 ActionView::Template::Error (undefined method `user_path' for #<#<Class:0x007fa3073d0020>:0x007fa3074f2e58>):
     1: <h1>Welcome <%= current_user.email %>, thanks for signing up! Please fill out forms below</h1>
-    2: 
+    2:
     3: <%= form_for current_user do |f| %>
     4:   <%= f.label :first_name %>:
     5:   <%= f.text_field :first_name %><br />
-    6: 
-  
+    6:
+
 app/views/home/index.html.erb:3:in `_app_views_home_index_html_erb___1470597733210058884_70169088918880'
   Rendering /Users/Dan/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
   Rendering /Users/Dan/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
@@ -2545,15 +2543,15 @@ Processing by HomeController#index as HTML
 Completed 500 Internal Server Error in 29158ms (ActiveRecord: 3.3ms)
 
 
-  
+
 ActionView::Template::Error (undefined method `user_path' for #<#<Class:0x007fa3073d0020>:0x007fa307433d78>):
     1: <h1>Welcome <%= current_user.email %>, thanks for signing up! Please fill out forms below</h1>
     2: <%= byebug %>
     3: <%= form_for current_user do |f| %>
     4:   <%= f.label :first_name %>:
     5:   <%= f.text_field :first_name %><br />
-    6: 
-  
+    6:
+
 app/views/home/index.html.erb:3:in `_app_views_home_index_html_erb___1470597733210058884_70169105295020'
   Rendering /Users/Dan/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
   Rendering /Users/Dan/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
@@ -2616,16 +2614,16 @@ Processing by Devise::RegistrationsController#new as HTML
 Completed 500 Internal Server Error in 653ms (ActiveRecord: 0.0ms)
 
 
-  
+
 ActionView::Template::Error (undefined local variable or method `first_name' for #<#<Class:0x007fbae929da00>:0x007fbae929c718>):
-    2: 
+    2:
     3: <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     4:   <%= devise_error_messages! %>
     5:   <%= f.label first_name %>
     6:   <%= f.text_area :first_name %> <br />
-    7: 
+    7:
     8:   <div class="field">
-  
+
 app/views/devise/registrations/new.html.erb:5:in `block in _app_views_devise_registrations_new_html_erb___793703228690823541_70220330245300'
 app/views/devise/registrations/new.html.erb:3:in `_app_views_devise_registrations_new_html_erb___793703228690823541_70220330245300'
   Rendering /Users/Dan/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
@@ -2808,10 +2806,10 @@ Processing by Devise::SessionsController#new as HTML
 Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
 
 
-  
+
 NoMethodError (undefined method `for' for #<Devise::ParameterSanitizer:0x007fe01e13b838>
 Did you mean?  fork):
-  
+
 app/controllers/application_controller.rb:7:in `configure_devise_params'
   Rendering /Users/Dan/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
   Rendering /Users/Dan/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
@@ -2823,9 +2821,9 @@ app/controllers/application_controller.rb:7:in `configure_devise_params'
   Rendered /Users/Dan/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (81.9ms)
 Started GET "/" for ::1 at 2016-10-12 11:14:13 -0400
   [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
-  
+
 SyntaxError (/Users/Dan/Documents/dev/xapix/ab-dsquared/app/controllers/application_controller.rb:24: syntax error, unexpected keyword_end, expecting end-of-input):
-  
+
 app/controllers/application_controller.rb:24: syntax error, unexpected keyword_end, expecting end-of-input
 app/controllers/home_controller.rb:1:in `<top (required)>'
   Rendering /Users/Dan/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
@@ -2934,3 +2932,141 @@ Completed 200 OK in 65ms (Views: 59.7ms | ActiveRecord: 1.5ms)
 
 
 >>>>>>> httparty-gets
+=======
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5901453059382514830);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateBookingsTable (20161012181025)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(5901453059382514830)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5901453059382514830);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateBookingsTable (20161012181025)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (19.6ms)[0m  [1m[35mCREATE TABLE "bookings" ("id" serial primary key, "user_id" integer, "passenger_id" character varying, "customer_address_id" character varying, "credit_card_id" character varying, "flight_segment_id" character varying)[0m
+  [1m[35mSQL (2.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161012181025"]]
+  [1m[35m (3.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5901453059382514830)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (3.4ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'bookings'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'credit_cards'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (3.0ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+Started POST "/bookings" for ::1 at 2016-10-12 16:16:47 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#new_booking as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eneJYbnn0S+LnwEcxiJhCQgRJ6X5cC3YN0OwLdsgEs2TevHQLBMp/R0MwWEILUf5hOMpbQZcq5E7Vc1XJxnujw==", "origin_airport_code"=>"EWR", "destination_airport_code"=>"TXL", "hotel"=>"Berlin Marriot", "commit"=>"Submit"}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 14869ms (ActiveRecord: 7.0ms)
+
+
+
+NoMethodError (undefined method `credit_card' for #<User:0x007f84c1c92a00>):
+
+app/adapters/adapter.rb:24:in `create_booking'
+app/controllers/home_controller.rb:6:in `new_booking'
+  Rendering /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.0ms)
+  Rendering /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.1ms)
+  Rendering /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (79.6ms)
+Started POST "/bookings" for ::1 at 2016-10-12 16:19:38 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#new_booking as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eneJYbnn0S+LnwEcxiJhCQgRJ6X5cC3YN0OwLdsgEs2TevHQLBMp/R0MwWEILUf5hOMpbQZcq5E7Vc1XJxnujw==", "origin_airport_code"=>"EWR", "destination_airport_code"=>"TXL", "hotel"=>"Berlin Marriot", "commit"=>"Submit"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 18607ms (ActiveRecord: 5.8ms)
+
+
+
+NoMethodError (undefined method `credit_card' for #<User:0x007fbe622b7078>):
+
+app/adapters/adapter.rb:24:in `create_booking'
+app/controllers/home_controller.rb:6:in `new_booking'
+  Rendering /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.7ms)
+  Rendering /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendering /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (75.7ms)
+Started POST "/bookings" for ::1 at 2016-10-12 16:25:49 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#new_booking as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eneJYbnn0S+LnwEcxiJhCQgRJ6X5cC3YN0OwLdsgEs2TevHQLBMp/R0MwWEILUf5hOMpbQZcq5E7Vc1XJxnujw==", "origin_airport_code"=>"EWR", "destination_airport_code"=>"TXL", "hotel"=>"Berlin Marriot", "commit"=>"Submit"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 7192ms (ActiveRecord: 7.7ms)
+
+
+
+LoadError (Unable to autoload constant CreditCard, expected /Users/flatironschool/xapix/projects/ab-dsquared/app/models/credit_card.rb to define it):
+
+app/adapters/adapter.rb:24:in `create_booking'
+app/controllers/home_controller.rb:6:in `new_booking'
+  Rendering /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (12.5ms)
+  Rendering /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.8ms)
+  Rendering /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.1ms)
+  Rendered /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (100.0ms)
+Started POST "/bookings" for ::1 at 2016-10-12 16:26:35 -0400
+Processing by HomeController#new_booking as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eneJYbnn0S+LnwEcxiJhCQgRJ6X5cC3YN0OwLdsgEs2TevHQLBMp/R0MwWEILUf5hOMpbQZcq5E7Vc1XJxnujw==", "origin_airport_code"=>"EWR", "destination_airport_code"=>"TXL", "hotel"=>"Berlin Marriot", "commit"=>"Submit"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCreditCard Load (0.4ms)[0m  [1m[34mSELECT  "credit_cards".* FROM "credit_cards" WHERE "credit_cards"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 47505ms (ActiveRecord: 9.7ms)
+
+
+
+SystemExit (exit):
+
+app/adapters/adapter.rb:26:in `create_booking'
+app/controllers/home_controller.rb:6:in `new_booking'
+  Rendering /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (238.1ms)
+  Rendering /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (56.2ms)
+  Rendering /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (14.4ms)
+  Rendered /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (380.2ms)
+>>>>>>> tripform
