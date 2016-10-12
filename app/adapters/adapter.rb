@@ -12,8 +12,8 @@ module Adapter
     def initialize
     end
 
-    def flight_segment
-      self.class.get(BASE_URL + "/availabilities", query: {"filter": ["departure": "TXL", "destination": "PMI"]}, headers: HEADERS)
+    def get_availabilities(departure, destination)
+      response = self.class.get(BASE_URL + "/availabilities", query: {"filter": ["departure": "#{departure}", "destination": "#{destination}"]}, headers: HEADERS)
     end
 
     def create_booking(user)
