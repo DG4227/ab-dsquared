@@ -32,7 +32,7 @@ module Adapter
     end
 
     def flight_segment
-      self.class.get(BASE_URL + "/availabilities", query: {"filters": ["combinations"], departure: "TXL", destination: "PMI", }, headers: HEADERS)
+      self.class.get(BASE_URL + "/availabilities", query: {"filter": ["departure": "TXL", "destination": "PMI"]}, headers: HEADERS)
     end
 
     def create_booking(user)
@@ -87,6 +87,11 @@ module Adapter
       response = self.class.post(BASE_URL + "/passengers", query: {"data": data}, headers: HEADERS)
       response.p_id
     end
+
+
+    # query: {"filter": ["departure": "TXL"], "filter":["destination": "PMI"]}, headers: HEADERS)
+
+    #https://app.xapix.io/api/v1/airberlin_lab_2016/availabilities?filter%5Bdeparture%5D=TXL&filter%5Bdestination%5D=PMI&fields%5Bavailabilities%5D=destination%2Cdeparture%2Crandom_id%2Cprevious_outbound_flight_date%2Cnext_outbound_flight_date&include=combinations&sort=random_id&page%5Bnumber%5D=1&page%5Bsize%5D=100
 
 
 

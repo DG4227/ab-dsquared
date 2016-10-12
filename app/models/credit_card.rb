@@ -1,3 +1,3 @@
-class Credit_card < ApplicationRecord
+class CreditCard < ApplicationRecord
   belongs_to :user
 end
