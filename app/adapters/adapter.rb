@@ -4,7 +4,7 @@ module Adapter
 
     include HTTParty
 
-    BASE_URL = 'https://app.xapix.io/api/v1'
+    BASE_URL = 'https://app.xapix.io/api/v1/airberlin_lab_2016'
     HEADERS = {'Accept' => 'application/json',
       'Authorization' => 'ab16_DSquared:mKCQoALD4JvY3WkTcaGOx670H2ge98nM'
       # "Content-Type" => 'application/json',
@@ -27,12 +27,18 @@ module Adapter
         "cvc": cvc,
         "expiry_date": expiry_date
       }
-      response = self.class.post(BASE_URL + "/airberlin_lab_2016/credit_cards", query: {"data": data}, headers: HEADERS)
+      response = self.class.post(BASE_URL + "/credit_cards", query: {"data": data}, headers: HEADERS)
     end
 
     def flight_segment
-      self.class.get(BASE_URL, {query: {}})
+      data = {
+        "departure":
+      }
+      self.class.get(BASE_URL + "/availabilities", query: {departure: "TXL", destination: "PMI", filters: "combinations"}, headers: HEADERS)
     end
+
+
+
 
 
 
