@@ -56,7 +56,6 @@ module Adapter
         "expiry_date": expiry_date
       }
       response = self.class.post(BASE_URL + "/credit_cards", query: {"data": data}, headers: HEADERS)
-      byebug
       response["cc_id"]
     end
 
@@ -93,7 +92,6 @@ module Adapter
         "date_of_birth": date_of_birth
       }
       response = self.class.post(BASE_URL + "/passengers", query: {"data": data}, headers: HEADERS)
-      byebug
       response["p_id"]
     end
 
