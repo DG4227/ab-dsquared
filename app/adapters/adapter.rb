@@ -31,10 +31,7 @@ module Adapter
     end
 
     def flight_segment
-      data = {
-        "departure":
-      }
-      self.class.get(BASE_URL + "/availabilities", query: {departure: "TXL", destination: "PMI", filters: "combinations"}, headers: HEADERS)
+      self.class.get(BASE_URL + "/availabilities", query: {"filters": ["combinations"], departure: "TXL", destination: "PMI", }, headers: HEADERS)
     end
 
 
