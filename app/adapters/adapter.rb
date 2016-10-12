@@ -14,6 +14,26 @@ module Adapter
       # @headers = HEADERS
     end
 
+    def flight_segment
+      self.class.get(BASE_URL + "/availabilities", query: {"filters": ["combinations"], departure: "TXL", destination: "PMI", }, headers: HEADERS)
+    end
+
+    def create_booking(user)
+      customer_id = get_customer_address_id(user)
+      passengers = get_passengers_id(user)
+      cc = get_credit_card_id(user.credit_card)
+      byebug
+      fs = flight_segment
+      data =
+        {
+          "passengers": passengers,
+          "credit_card": cc,
+          "customer_address": customer_id,
+          "flight_segments": fs,
+        }
+        response = self.class.post(BASE_URL + "/bookings", query: {"data": data}, headers: HEADERS)
+    end
+
     def get_credit_card_id(ccard)
       number = ccard.number
       type = ccard.card_type
@@ -28,29 +48,9 @@ module Adapter
         "expiry_date": expiry_date
       }
       response = self.class.post(BASE_URL + "/credit_cards", query: {"data": data}, headers: HEADERS)
-      response.cc_id
+      byebug
+      response["cc_id"]
     end
-
-    def flight_segment
-      self.class.get(BASE_URL + "/availabilities", query: {"filters": ["combinations"], departure: "TXL", destination: "PMI", }, headers: HEADERS)
-    end
-
-    def create_booking(user)
-      customer_id = get_customer_address_id(user)
-      passengers = get_passengers_id(user)
-      cc = get_credit_card_id(user.credit_card)
-      fs = flight_segment
-      data =
-        {
-          "passengers": passengers,
-          "credit_card": cc,
-          "customer_address": customer_id,
-          "flight_segments": fs,
-        }
-        response = self.class.post(BASE_URL + "/bookings", query: {"data": data}, headers: HEADERS)
-    end
-
-    private
 
     def get_customer_address_id(user)
       name = user.first_name + " " + user.last_name
@@ -58,7 +58,7 @@ module Adapter
       country_code = user.country_code
       language_code = user.language_code
       city = user.city
-      address = user.address1
+      address = user.address
       email = user.email
       data = {
         "zip": zip,
@@ -70,7 +70,7 @@ module Adapter
         "language_code": language_code
       }
       response = self.class.post(BASE_URL + "/customer_addresses", query: {"data": data}, headers: HEADERS)
-      response.c_id
+      response["c_id"]
     end
 
     def get_passengers_id(user)
@@ -85,7 +85,8 @@ module Adapter
         "date_of_birth": date_of_birth
       }
       response = self.class.post(BASE_URL + "/passengers", query: {"data": data}, headers: HEADERS)
-      response.p_id
+      byebug
+      response["p_id"]
     end
 
 
