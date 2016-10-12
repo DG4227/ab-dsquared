@@ -7,11 +7,9 @@ module Adapter
     BASE_URL = 'https://app.xapix.io/api/v1/airberlin_lab_2016'
     HEADERS = {'Accept' => 'application/json',
       'Authorization' => 'ab16_DSquared:mKCQoALD4JvY3WkTcaGOx670H2ge98nM'
-      # "Content-Type" => 'application/json',
     }
 
     def initialize
-      # @headers = HEADERS
     end
 
     def get_credit_card_id(ccard)
@@ -50,6 +48,16 @@ module Adapter
         response = self.class.post(BASE_URL + "/bookings", query: {"data": data}, headers: HEADERS)
     end
 
+    def get_coordinates(airport, address)
+      url = "https://app.xapix.io/api/v1/ab16_DSquared/latlong?"
+
+      locations = [airport, address]
+      latlongs = locations.map! do |location|
+        response = self.class.get(url, query: {"filter[destination]": location}, headers: HEADERS)["latlong"].first["l_id"]
+      end
+      latlongs
+    end
+
     private
 
     def get_customer_address_id(user)
@@ -65,7 +73,7 @@ module Adapter
         "name": name,
         "country_code": country_code,
         "city": city,
-        "address1": address,
+        "address": address,
         "email": email,
         "language_code": language_code
       }
@@ -87,6 +95,7 @@ module Adapter
       response = self.class.post(BASE_URL + "/passengers", query: {"data": data}, headers: HEADERS)
       response.p_id
     end
+
 
 
     # query: {"filter": ["departure": "TXL"], "filter":["destination": "PMI"]}, headers: HEADERS)

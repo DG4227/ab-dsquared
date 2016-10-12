@@ -177,6 +177,7 @@ DEPENDENCIES
   httparty (~> 0.13.7)
   jbuilder (~> 2.5)
   jquery-rails
+  json
   listen (~> 3.0.5)
   pg (~> 0.18)
   puma (~> 3.0)
