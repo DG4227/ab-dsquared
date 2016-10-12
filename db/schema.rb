@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161012181025) do
+ActiveRecord::Schema.define(version: 20161012213829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,10 @@ ActiveRecord::Schema.define(version: 20161012181025) do
     t.string   "dob"
     t.string   "type"
     t.string   "persontype"
+    t.integer  "current_booking_id"
+    t.string   "passenger_id"
+    t.string   "cc_id"
+    t.string   "customer_address_id"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
