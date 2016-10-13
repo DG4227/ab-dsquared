@@ -1,13 +1,21 @@
-
+require_relative "booking.rb"
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  after_create :generate_booking
   has_one :credit_card
   has_many :bookings
+  #belongs_to :current_booking, class_name: "Booking"
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  def generate_booking
+    booking = Booking.new()
+    booking.user_id = self.id
+    booking.save
+    #current_user.current_booking_id = booking.id
+  end
 
   # attr_accessor :email, :first_name, :last_name, :address, :zipcode, :country_code, :language_code, :dob, :persontype
   #

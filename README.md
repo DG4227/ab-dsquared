@@ -22,3 +22,10 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+Next -
+
+Flight segments
+
+Hardcode Navitia Endpoints 

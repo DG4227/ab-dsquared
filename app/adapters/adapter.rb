@@ -33,6 +33,7 @@ module Adapter
     end
 
     def get_coordinates(airport, address)
+      address = address.gsub(" ", "+")
       url = "https://app.xapix.io/api/v1/ab16_DSquared/latlong?"
 
       locations = [airport, address]
@@ -78,6 +79,8 @@ module Adapter
       }
       response = self.class.post(BASE_URL + "/customer_addresses", query: {"data": data}, headers: HEADERS)
       response["c_id"]
+      secret_shortcut = "1781df40-e141-4d03-b21a-04c9265ac0d5"
+      secret_shortcut
     end
 
     def get_passengers_id(user)
@@ -95,6 +98,8 @@ module Adapter
       response["p_id"]
     end
 
+    def get_airport_lines
+    end
 
 
     # query: {"filter": ["departure": "TXL"], "filter":["destination": "PMI"]}, headers: HEADERS)

@@ -1,0 +1,21 @@
+<h1> Credit Card Info! </h1>
+
+<%= form_for CreditCard.new(), url: {action: "create"} do |f| %>
+
+  <%= f.label :holders_name %>
+  <%= f.text_field :holders_name %> <br />
+
+  <%= f.label :card_type%>
+  <%= f.text_field :card_type %> <br />
+
+  <%= f.label :credit_card_number %>
+  <%= f.text_field :number %> <br />
+
+  <%= f.label :credit_card_cvc %>
+  <%= f.text_field :cvc %> <br />
+
+  <%= f.label :expiration_date %>
+  <%= f.text_field :expiry_date %> <br />
+
+  <%= f.submit "Create" %>
+<% end %>
