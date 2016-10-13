@@ -20,23 +20,23 @@ module Adapter
       customer_id = get_customer_address_id(user)
       passengers = get_passengers_id(user)
       cc = get_credit_card_id(user.credit_card)
-      byebug
-      fs = flight_segment
+      fs = "36f7f46e-6935-4144-8050-8b7adb1a3614"
       data =
         {
           "passengers": passengers,
           "credit_card": cc,
           "customer_address": customer_id,
-          "flight_segments": fs,
+          "flight_segments": fs
         }
-        response = self.class.post(BASE_URL + "/bookings", query: {"data": data}, headers: HEADERS)
+      byebug
+      response = self.class.post(BASE_URL + "/bookings", body: {"data": data}, headers: HEADERS)
     end
 
     def get_coordinates(airport, address)
       address = address.gsub(" ", "+")
       url = "https://app.xapix.io/api/v1/ab16_DSquared/latlong?"
 
-      locations = [airport, address]
+      locations = ["TXL", "Berlin+Marriot+Hotel"]
       latlongs = locations.map! do |location|
         response = self.class.get(url, query: {"filter[destination]": location}, headers: HEADERS)["latlong"].first["l_id"]
       end
@@ -99,6 +99,7 @@ module Adapter
     end
 
     def get_airport_lines
+
     end
 
 
@@ -106,6 +107,15 @@ module Adapter
 
     #https://app.xapix.io/api/v1/airberlin_lab_2016/availabilities?filter%5Bdeparture%5D=TXL&filter%5Bdestination%5D=PMI&fields%5Bavailabilities%5D=destination%2Cdeparture%2Crandom_id%2Cprevious_outbound_flight_date%2Cnext_outbound_flight_date&include=combinations&sort=random_id&page%5Bnumber%5D=1&page%5Bsize%5D=100
 
+    #
+    # {
+    #   "data": {
+    #     "passengers": "8f52b2e4-9b7b-4378-abf7-3ce1030b24c2",
+    #     "credit_card": "74f94e7f-b106-407f-ae79-052d5954a067",
+    #     "customer_address": "0974038d-ed41-463a-a6f5-339d21104fc0",
+    #     "flight_segments": "a8aceabb-a469-450e-9ff3-4f6ee2efcacb"
+    #   }
+    
 
 
   end

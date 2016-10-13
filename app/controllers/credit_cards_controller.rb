@@ -5,6 +5,7 @@ class CreditCardsController < ApplicationController
     card.user_id = current_user.id
     card.save
     xapix = Adapter::Xapix.new
+    byebug
     current_user.cc_id = xapix.get_credit_card_id(card)
     #current_booking = Booking.all.find_by id: current_user.current_booking_id
     #current_booking.credit_card_id = current_user.cc_id
